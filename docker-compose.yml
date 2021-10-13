@@ -26,7 +26,7 @@ services:
   php-apache:
     build: ./php
     volumes:
-      - ./htdocs:/var/www/html
+      - ./htdocs:/staff:/var/www/html     # staffディレクトリの配下にindex.phpを設置できるように設定
     restart: always
     ports:
       - "80:80"
@@ -37,3 +37,4 @@ services:
 
 volumes:
     db_data: {}
+

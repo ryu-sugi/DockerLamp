@@ -1,5 +1,3 @@
-<!--staff_add.phpの代用ファイル、後ほどindex.php ⇨ staff_add.phpに変更 -->
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
