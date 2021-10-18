@@ -7,6 +7,7 @@
  <title>ろくまる農園</title>
 </head>
 <body>
+
 <?php 
 
 try

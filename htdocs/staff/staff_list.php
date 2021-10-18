@@ -24,6 +24,7 @@ try
 
  $dbh = null;
 
+
 print'スタッフ一覧 <br/><br/>';
 
 print'<form method="post" action="staff_branch.php">';
@@ -52,5 +53,3 @@ catch(Exception $e)
 }
 
 ?>
-</body>
-</html>
