@@ -12,7 +12,7 @@
 try
 {
 
-$staff_code=$_POST['staffcode'];
+$staff_code=$_GET['staffcode'];
 
  $dsn = 'mysql:dbname=shop;host=172.19.0.4;port=3306;charset=utf8';
  $user = 'root';
