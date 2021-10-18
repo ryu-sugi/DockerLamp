@@ -39,17 +39,20 @@ catch(Exception $e)
 
 ?>
 
-スタッフ情報参照<br/>
+スタッフ削除<br/>
 <br/>
-スタッフコード <br>
+スタッフコード<br/>
 <?php print $staff_code; ?>
-<br>
-スタッフ名<br/>
+<br/>
+スタッフ名 <br>
 <?php print $staff_name; ?>
-<br/>
-<br/>
-<form>
+<br>
+このスタッフを削除してよろしいですか？ <br>
+<br>
+<form method="post" action="staff_delete_done.php">
+<input type="hidden" name="code" value="<?php print $staff_code; ?>">
 <input type="button" onclick="history.back()" value="戻る">
+<input type="submit" value="OK">
 </form>
 
 </body>
