@@ -38,7 +38,7 @@ if(isset($_POST['delete'])==true)
          exit();
      }
       $pro_code=$_POST['procode'];
-      header('Location: staff_delete.php?procode='.$pro_code);
+      header('Location: pro_delete.php?procode='.$pro_code);
       exit();
 }
 
