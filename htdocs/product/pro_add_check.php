@@ -28,18 +28,18 @@ else
     print'<br/>';
 }
 
-if(preg_match('/[0-9.,]+/u',$pro_price)==0)
+if(preg_match("/^[0-9]+$/", $pro_price)==0)
 {
     print'価格を正しく入力してください。 <br/>';
 }
 else
 {
     print '価格:';
-    print '$pro_price';
+    print $pro_price;
     print '円 <br> ';
 }
 
-if($pro_name==''||preg_match('/[0-9.,]+/u',$pro_price)==0)
+if($pro_name==''||preg_match("/^[0-9]+$/", $pro_price)==0)
 {
     print '<form>';
     print'<input type="button" onclick="history.back()"Value="戻る">';
