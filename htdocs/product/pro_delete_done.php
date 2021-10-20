@@ -13,6 +13,7 @@
 try
 {
     $pro_code = $_POST['code'];
+    $pro_gazou_name=$_POST['code'];
 
     // ↓教科書と開発環境が違う為要注意：[host=localhost]ではなく、dockerで使われているIPAddressを確認して[host=IPAddress]を入力する。
     $dsn = 'mysql:dbname=shop;host=172.19.0.4;port=3306;charset=utf8';
@@ -27,6 +28,11 @@ try
     $stmt->execute($data);
 
     $dbh = null;
+
+if($pro_gaozu_name='')
+{
+    unlink('./gazou/'.$pro_gazou_name);
+}
 
 }
     catch (Exception $e)
