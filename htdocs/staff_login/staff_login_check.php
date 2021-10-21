@@ -34,6 +34,10 @@ if($rec==false)
 }
 else
 {
+    session_start();
+    $_SESSION['login']=1;
+    $_SESSION['staff_code']=$staff_code;
+    $_SESSION['staff_name']=$rec['name'];
     header('Location: staff_top.php');
     exit();
 }
