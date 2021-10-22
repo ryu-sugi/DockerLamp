@@ -48,7 +48,7 @@ try
 
 if($pro_gaozu_name='')
 {
-    unlink('./gazou/'.$pro_gazou_name);
+    unlink('../gazou/'.$pro_gazou_name);
 }
 
 }
