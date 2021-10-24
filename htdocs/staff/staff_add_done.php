@@ -30,12 +30,12 @@ else
 try
 {
 
-    $staff_name = $_POST['name'];
-    $staff_pass = $_POST['pass'];
+    require_once('../common/common.php');
 
-    $staff_name = htmlspecialchars($staff_name,ENT_QUOTES,'UTF-8');
-    $staff_pass = htmlspecialchars($staff_pass,ENT_QUOTES,'UTF-8');
-    // ↓教科書と開発環境が違う為要注意：[host=localhost]ではなく、dockerで使われているIPAddressを確認して[host=IPAddress]を入力する。
+    $post = sanitize($_POST);
+    $staff_name = $post['name'];
+    $staff_pass = $post['pass'];
+        // ↓教科書と開発環境が違う為要注意：[host=localhost]ではなく、dockerで使われているIPAddressを確認して[host=IPAddress]を入力する。
     $dsn = 'mysql:dbname=shop;host=172.19.0.4;port=3306;charset=utf8';
     $user = 'root';
     $password = 'password';
