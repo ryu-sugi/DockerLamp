@@ -83,7 +83,6 @@ catch(Exception $e)
     }
 ?>
 
-
 <form>
 <input type="button" onclick="history.back()" value="戻る">
 </form>
