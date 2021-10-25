@@ -31,7 +31,8 @@ else
 try
 {
 
-$pro_code=$_GET['procode'];
+$cart = $_SESSION['cart'];
+$max = count($cart);
 
  $dsn = 'mysql:dbname=shop;host=172.19.0.4;port=3306;charset=utf8';
  $user = 'root';
@@ -39,28 +40,28 @@ $pro_code=$_GET['procode'];
  $dbh = new PDO($dsn, $user, $password);
  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
- $sql = 'SELECT name,price,gazou FROM mst_product WHERE code=?';
- $stmt = $dbh->prepare($sql);
- $data[]=$pro_code;
- $stmt->execute($data);
-
-$rec = $stmt->fetch(PDO::FETCH_ASSOC);
-$pro_name=$rec['name'];
-$pro_price=$rec['price'];
-$pro_gazou_name=$rec['gazou'];
-
- $dbh = null;
-
-if($pro_gazou_name=='')
+foreach($cart as $key => $val)
 {
-    $disp_gazou='';
+    $sql = 'SELECT code,name,price,gazou FROM mst_product WHERE code=?';
+    $stmt = $dbh -> prepare($sql);
+    $data[0] = $val;
+    $stmt -> execute($data);
+
+    $rec = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+    $pro_name[] = $rec['name'];
+    $pro_price[] = $rec['price'];
+    if($rec['gazou'] == '')
+    {
+        $pro_gazou[] = '';
+    }
+    else
+    {
+        $pro_gazou[] = '<img src="../product/gazou/'.$rec['gazou'].'">';
+    }
 }
-else
-{
-    $disp_gazou='<img src="../../gazou/'.$pro_gazou_name.'">';
-}
-print '<a href="shop_cartin.php?procode='.$pro_code.'">カートに入れる</a> <br> <br>';
- 
+$dbh = null;
+
 }
 catch(Exception $e)
 {
@@ -70,20 +71,19 @@ catch(Exception $e)
 
 ?>
 
-商品情報参照<br/>
-<br/>
-商品コード <br>
-<?php print $pro_code; ?>
-<br>
-商品名<br/>
-<?php print $pro_name; ?>
-<br/>
-価格 <br/>
-<?php print $pro_price; ?>円
-<br/>
-<?php print $disp_gazou; ?>
-<br>
-<br/>
+カートの中身 <br>
+<?php for($i=0; $i<$max; $i++)
+      {
+?>
+    <?php print $pro_name[$i]; ?>
+    <?php print $pro_gazou[$i]; ?>
+    <?php print $pro_price[$i]; ?> 円
+    <br>
+<?php
+    }
+?>
+
+
 <form>
 <input type="button" onclick="history.back()" value="戻る">
 </form>

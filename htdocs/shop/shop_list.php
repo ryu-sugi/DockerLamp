@@ -60,6 +60,9 @@ print'商品一覧 <br/><br/>';
      print '<br/>';
 }
 
+print '<br>';
+print '<a href="shop_cartlook.php">カートを見る</a>';
+
 }
 catch(Exception $e)
 {
