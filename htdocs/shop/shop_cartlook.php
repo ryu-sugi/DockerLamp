@@ -31,9 +31,16 @@ else
 try
 {
 
-$cart = $_SESSION['cart'];
-$kazu = $_SESSION['kazu'];
-$max = count($cart);
+if(isset($_SESSION['cart'])==true)
+{
+    $cart = $_SESSION['cart'];
+    $kazu = $_SESSION['kazu'];
+    $max = count($cart);
+}
+else
+{
+    $max=0;
+}
 
 if($max == 0)
 {
