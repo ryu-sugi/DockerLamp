@@ -83,6 +83,7 @@ catch(Exception $e)
     <?php print $kazu[$i]; ?>
     <input type="text" name="kazu<?php print $i; ?>" value="<?php print $kazu[$i]; ?>">
     <?php print $pro_price[$i] * $kazu[$i]; ?>円
+    <input type="checkbox" name="sakujo<?php print $i; ?>">
     <br>
 <?php
     }
