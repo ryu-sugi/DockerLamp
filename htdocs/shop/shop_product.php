@@ -57,7 +57,7 @@ if($pro_gazou_name=='')
 }
 else
 {
-    $disp_gazou='<img src="../../gazou/'.$pro_gazou_name.'">';
+    $disp_gazou='<img src="../product/gazou/'.$pro_gazou_name.'">';
 }
 print '<a href="shop_cartin.php?procode='.$pro_code.'">カートに入れる</a> <br> <br>';
  
