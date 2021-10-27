@@ -64,6 +64,7 @@ for($i=0; $i<$max; $i++)
 
     $name = $rec['name'];
     $price = $rec['price'];
+    $kakaku[] = $price;
     $suryo = $kazu[$i];
     $shokei = $price * $suryo;
 
@@ -71,6 +72,36 @@ for($i=0; $i<$max; $i++)
     $honbun.=$price.'円x';
     $honbun.=$suryo.'個 =';
     $honbun.=$shokei."円 \n";
+}
+
+$sql = 'INSERT INTO dat_sales(code_member,name,email,postal1,postal2,address,tel) VALUES(?,?,?,?,?,?,?)';
+$stmt = $dbh->prepare($sql);
+$data = array();
+$data[] = 0;
+$data[] = $onamae;
+$data[] = $email;
+$data[] = $postal1;
+$data[] = $postal2;
+$data[] = $address;
+$data[] = $tel;
+$stmt->execute($data);
+
+$sql = 'SELECT LAST_INSERT_ID()';
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$rec = $stmt->fetch(PDO::FETCH_ASSOC);
+$lastcode=$rec['LAST_INSERT_ID()'];
+
+for($i=0; $i<$max; $i++)
+{
+ $sql = 'INSERT INTO dat_sales_product(code_sales,code_product,price,quantity) VALUES(?,?,?,?)';
+    $stmt = $dbh->prepare($sql);
+    $data = array();
+    $data[] = $lastcode;
+    $data[] = $cart[$i];
+    $data[] = $kakaku[$i];
+    $data[] = $kazu[$i];
+    $stmt->execute($data);
 }
 
 $dbh = null;
@@ -89,8 +120,23 @@ $honbun.="〇〇県六丸郡六丸村 123-4 \n";
 $honbun.="電話 090-6060-xxxx \n"; 
 $honbun.="メール info@rokumarunouen.co.jp \n";
 $honbun.="□□□□□□□□□□□□□□□□□□□□□□□□□□□□ \n";
-print '<br>';
-print nl2br($honbun);
+// print '<br>';
+// print nl2br($honbun);
+
+$title = 'ご注文ありがとうございます。';
+$header = 'From: info@rokumarunouen.co.jp';
+$honbun = html_entity_decode($honbun, ENT_QUOTES, 'UTF-8');
+mb_language('Japanese');
+mb_internal_encoding('UTF-8');
+mb_send_mail($email, $title, $honbun, $header);
+
+$title = 'お客様からご注文がありました。';
+$header = 'From:'.$email;
+$honbun = html_entity_decode($honbun, ENT_QUOTES, 'UTF-8');
+mb_language('Japanese');
+mb_internal_encoding('UTF-8');
+mb_send_mail('info@rokumarunouen.co.jp', $title, $honbun, $header);
+
 }
 catch(Exception $e)
 {
