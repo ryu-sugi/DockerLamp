@@ -18,9 +18,10 @@ $onamae=$post['onamae'];
 $email=$post['email'];
 $postal1=$post['postal1'];
 $postal2=$post['postal2'];
-$address=$post['tel'];
+$address=$post['address'];
+$tel=$post['tel'];
 
-if($oname=='')
+if($onamae=='')
 {
     print 'お名前が入力されていません。 <br> <br>';
 }
@@ -30,12 +31,12 @@ if(preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9._-]
     print 'メールアドレスを正確に入力してください。 <br> <br>';
 }
 
-if(preg_match('/\A\[0-9]+\z/',$postal1)==0)
+if(preg_match('/^[0-9]+$/',$postal1)==0)
 {
     print '郵便番号は半角数字で入力してください。 <br> <br>';
 }
 
-if(preg_match('/\A\[0-9]+\z/',$postal2)==0)
+if(preg_match('/^[0-9]+$/',$postal2)==0)
 {
     print '郵便番号は半角数字で入力してください。 <br> <br>';
 }
@@ -51,7 +52,7 @@ if(preg_match('/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/',$tel)==0)
 }
 
 print '<form method="post" action="shop_form_done.php">';
-print '<input type="hidden" name="onamae" value="'.$onammae.'">';
+print '<input type="hidden" name="onamae" value="'.$onamae.'">';
 print '<input type="hidden" name="email" value="'.$email.'">';
 print '<input type="hidden" name="postal1" value="'.$postal1.'">';
 print '<input type="hidden" name="postal2" value="'.$postal2.'">';
