@@ -1,3 +1,7 @@
+<?php  
+    session_start();
+    session_regenerate_id(true);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,7 +12,7 @@
 </head>
 <body>
 
-<?php 
+<?php
 
 require_once('../common/common.php');
 
