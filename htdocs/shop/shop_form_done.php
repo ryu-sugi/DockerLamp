@@ -153,5 +153,8 @@ catch(Exception $e)
 }
 ?>
 
+<br>
+<a href="shop_list.php">商品画面へ</a>
+
 </body>
 </html>
