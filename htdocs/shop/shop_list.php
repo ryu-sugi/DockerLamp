@@ -62,6 +62,7 @@ print'商品一覧 <br/><br/>';
 
 print '<br>';
 print '<a href="shop_cartlook.php">カートを見る</a>';
+print '<br>';
 
 }
 catch(Exception $e)
@@ -71,5 +72,9 @@ catch(Exception $e)
 }
 
 ?>
+
+<br>
+<a href="../top.html">総合トップページ</a> <br>
+<br>
 
 </body>

@@ -34,6 +34,9 @@ else
 <a href="../order/order_download.php">注文ダウロード</a> <br>
 <br>
 <a href="staff_logout.php">ログアウト</a> <br>
+<br>
+<a href="../top.html">総合トップページ</a> <br> 
+
 
 </body>
 </html>
