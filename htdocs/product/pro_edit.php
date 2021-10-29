@@ -56,7 +56,7 @@ if($pro_gazou_name_old=='')
 }
 else
 {
-    $disp_gazou='<img src="../gazou/'.$pro_gazou_name_old.'">';
+    $disp_gazou='<img src="../product/gazou/'.$pro_gazou_name_old.'">';
 }
 
 }
