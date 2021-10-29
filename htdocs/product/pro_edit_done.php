@@ -58,7 +58,7 @@ if($pro_gazou_name_old != $pro_gazou_name)
 {
     if($pro_gazou_name_old != '')
     {
-        unlink('../gazou/'.$pro_gazou_name_old);
+        unlink('../product/gazou/'.$pro_gazou_name_old);
     }
 }
 
