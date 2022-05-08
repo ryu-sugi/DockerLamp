@@ -46,7 +46,7 @@ try
 
     $dbh = null;
 
-if($pro_gaozu_name='')
+if($pro_gazou_name!='')
 {
     unlink('../gazou/'.$pro_gazou_name);
 }
